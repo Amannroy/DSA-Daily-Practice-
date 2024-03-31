@@ -32,7 +32,7 @@ function bubbleSort(arr) {
     return arr;
 }
 
-// Example usage
+
 var arr = [243, 45, 23, 356, 3, 5346, 35, 5];
 console.log(bubbleSort(arr)); // Output: [3, 5, 23, 35, 45, 243, 356, 5346]
 
