@@ -1,11 +1,4 @@
-function factorial(n){
-    // Base Case
-    if(n === 0){
-        return 1;
-    }
-    return n * factorial(n-1);
-}
-console.log(factorial(4));function factorial(n) {
+function factorial(n) {
     // Base Case: If n is 0, return 1 because the factorial of 0 is 1.
     if (n === 0) {
         return 1;
