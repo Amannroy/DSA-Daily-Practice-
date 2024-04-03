@@ -11,7 +11,7 @@ function power(x, n) {
     }
     // Recursive Case: If n is greater than 1, calculate the power of x to the n/2.
     // This is done by recursively calling power with x and n/2.
-    let mid = n / 2;
+    let mid = Math.floor(n / 2);
     let y = power(x, mid);
     // Calculate the final result by squaring y if n is even, or by multiplying y by x if n is odd.
     // This is because x^n = (x^(n/2))^2 if n is even, and x^n = x * (x^(n/2))^2 if n is odd.
@@ -25,7 +25,7 @@ function power(x, n) {
 }
 
 // Call the power function with the arguments 2 and 4 and log the result.
-console.log(power(2, 4)); // Output: 16
+console.log(power(2, 5)); // Output: 16
 
 
 // Recurrence Relation
