@@ -11,7 +11,6 @@ function factorial(n) {
 // Call the factorial function with the argument 4 and log the result.
 console.log(factorial(4)); // Output: 24
 
-// Recurrence Relation
-
-// Time Complexity
-// Space Complexity
+// Recurrence Relation: T(n) = T(n-1) + O(1)
+// Time Complexity: O(n), as each recursive call leads to n multiplications in total.
+// Space Complexity: O(n), due to the recursive calls creating a new stack frame for each call. The maximum depth of the recursion is proportional to n.
