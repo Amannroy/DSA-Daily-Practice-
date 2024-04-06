@@ -20,7 +20,7 @@ function min_array(n) {
 console.log(min_array([3,5,1,2,9])); // Output: 1
 
 
-// Recurrence Relation
+// Recurrence Relation->T(n)=T(n−1)+O(1)
 
-// Time Complexity
-// Space Complexity
+// Time Complexity-> The time complexity of the min_array function is O(n), where n is the number of elements in the input array. This is because the function needs to iterate through all elements of the array to find the minimum.
+// Space Complexity-> The space complexity of the min_array function is also O(n), where n is the number of elements in the input array. This is due to the recursive calls creating a new stack frame for each call. The maximum depth of the recursion is proportional to n, as the function needs to process each element of the array.
