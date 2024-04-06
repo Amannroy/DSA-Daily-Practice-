@@ -24,7 +24,10 @@ function binarySearch(arr, target, start = 0, end = arr.length - 1) {
 console.log(binarySearch([2, 4, 5, 6, 7, 8, 98, 567], 567)); // Output: 7
 
 
-// Recurrence Relation
-
-// Time Complexity
-// Space Complexity
+// Recurrence Relation->  T(n)=T(2n)+O(1)
+//Where:
+// T(n) represents the time taken to perform a binary search on an array of size 
+// T(n/2) represents the time taken to perform a binary search on half of the array.
+// O(1) represents the constant time taken for comparisons and other basic operations within each recursive call.
+// Time Complexity-> O(logn), where n is the number of elements in the array. This is because, with each recursive call, the search space is halved. As a result, the time complexity grows logarithmically with the size of the input array.
+// Space Complexity-> O(logn), where n is the number of elements in the array. This is due to the recursive nature of the algorithm, which leads to the creation of a new stack frame for each recursive call. Since the maximum depth of the recursion is proportional to the logarithm of the input size, the space complexity is logarithmic.
