@@ -15,5 +15,5 @@ console.log(fibonacci(5)); // Output: 5
 
 // Recurrence Relation-> T(n)=T(n−1)+T(n−2)+O(1)
 
-// Time Complexity-> the total number of function calls grows exponentially with n. Therefore, the time complexity is exponential, specifically O(2n)
+// Time Complexity-> The total number of function calls grows exponentially with n. Therefore, the time complexity is exponential, specifically O(2n)
 // Space Complexity-> Since there are n levels of recursion in the worst case, the space complexity is proportional to n, i.e., O(n)
