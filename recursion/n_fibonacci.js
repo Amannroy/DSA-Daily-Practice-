@@ -20,7 +20,7 @@ function printFibonacciSequence(n) {
 console.log(printFibonacciSequence(6));
 
 
-// Recurrence Relation
+// Recurrence Relation-> T(n)=T(n−1)+T(n−2)+O(1), where T(n) represents the time taken to compute the nth Fibonacci number.
 
-// Time Complexity
-// Space Complexity
+// Time Complexity-> the total number of function calls grows exponentially with n. Therefore, the time complexity is exponential, specifically O(2^n)
+// Space Complexity->Since there are n levels of recursion in the worst case, the space complexity is proportional to n, i.e., O(n)
