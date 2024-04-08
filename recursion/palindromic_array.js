@@ -21,7 +21,9 @@ function palindrome(x) {
 console.log(palindrome("1221")); // Output: true
 
 
-// Recurrence Relation
+// Recurrence Relation-> T(n)=T(n−2)
 
-// Time Complexity
-// Space Complexity
+// Time Complexity-> At each step of the recursion, the function removes two characters from the string and compares the remaining substring.
+// The time complexity can be expressed as O(n/2), where n is the length of the string.
+// in Big O notation, we drop the constant factor, so the time complexity is O(n).
+// Space Complexity-> The space complexity is O(n), where n is the length of the input string.
