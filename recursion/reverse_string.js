@@ -20,11 +20,11 @@ function reverseString(s) {
     reverseHelper(0, s.length - 1);
     
     // Join the reversed array of characters back into a string and return it
-    return s.join('');
+    return s;
 }
 
 // Example usage
-console.log(reverseString(["h", "e", "l", "l", "o"])); // Output: "olleh"
+console.log(reverseString(["h", "e", "l", "l", "o"])); // Output: [ 'o', 'l', 'l', 'e', 'h' ]
 
 
 // Recurrence Relation-> T(n)=T(n−2)
