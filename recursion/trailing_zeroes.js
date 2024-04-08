@@ -13,4 +13,4 @@ console.log(trailingZeroes(10)); // Output: 2
 // Where T(n) represents the time taken to compute the number of trailing zeroes in n.
 
 // Time Complexity: O(log n), as the function divides n by 5 in each recursive call until n is less than 5.
-// Space Complexity: O(log n), as the function creates a new stack frame for each recursive call, and the maximum depth of the recursion is proportional to log₅ n.
+// Space Complexity: O(log n), as the function creates a new stack frame for each recursive call, and the maximum depth of the recursion is proportional to log n.
