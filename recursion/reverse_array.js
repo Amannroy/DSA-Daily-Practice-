@@ -1,24 +1,21 @@
-function reverseString(str) {
-    // Base Case: If the string is empty, return an empty string
-    if (str === '') {
-        return '';
+function reverseArray(arr) {
+    // Base Case: If the array is empty, return an empty array
+    if (arr.length === 0) {
+        return [];
     }
-    // Recursive Case: Reverse the string by slicing from the second character to the end
-    // and appending the first character to the end of the result
-    return reverseString(str.substr(1)) + str.charAt(0);
+    // Recursive Case: Remove the last element from the array and append it to the beginning
+    return [arr.pop()].concat(reverseArray(arr));
 }
 
 // Example usage
-console.log(reverseString("3467")); // Output: "7643"
+console.log(reverseArray([1, 2, 3, 4, 5])); // Output: [5, 4, 3, 2, 1]
+
 
 
 // Recurrence Relation-> In this recursive approach, the function reverses the string by appending the first character to the reversed substring of the rest of the string.
 //Let n denote the length of the input string.
-//The recurrence relation for this function can be represented as:T(n)=T(n−1)+O(1)
+//The recurrence relation for this function can be represented as:T(n) = T(n-1) + O(1)
+// This recurrence relation represents the time complexity of the function. The function makes a recursive call to itself with n-1 elements, and then performs a constant amount of work (removing the last element and concatenating it with the result).
 
-// Time Complexity->At each recursive call, the function slices the string and appends a character. Both operations have a time complexity of O(n).
-// The function is called n times, where n is the length of the input string.
-// Therefore, the overall time complexity is O(n^2).
-// Space Complexity -> The space complexity depends on the depth of the recursion stack, which is O(n), as there could be n recursive calls.
-// Additionally, each recursive call creates a new string by slicing the input string, which also contributes to the space complexity.
-// Therefore, the space complexity is O(n^ 2).
+// Time Complexity->The time complexity of the reverseArray function is O(n), where n is the number of elements in the array. This is because the function performs a constant amount of work for each element in the array.
+// Space Complexity -> the space complexity of the reverseArray function is O(n), where n is the number of elements in the array. This is because the function uses a stack frame for each recursive call, and in the worst case, the depth of the recursion is equal to the number of elements in the array.

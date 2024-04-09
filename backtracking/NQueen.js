@@ -64,7 +64,18 @@ let solveNQueens = function(n) {
 console.log(solveNQueens(4));
 
 
-// Recurrence Relation
+// Recurrence Relation->T(n) = n * T(n-1) + O(n^2)
+// This recurrence relation represents the time complexity of the function. The function makes n recursive calls to itself with n-1 elements, and then performs a constant amount of work (checking if a queen can be placed and updating the board) for each of the n elements.
+// T(n) = n * T(n-1) + O(n^2)
+// T(n-1) = (n-1) * T(n-2) + O((n-1)^2)
+// T(n-2) = (n-2) * T(n-3) + O((n-2)^2)
+// ...
+// T(2) = 2 * T(1) + O(2^2)
+// T(1) = 1 * T(0) + O(1^2)
+// T(0) = 0
+// Adding these up, we get:
 
-// Time Complexity
-// Space Complexity
+// T(n) = n * (n-1) * (n-2) * ... * 1 + O(n^2) + O((n-1)^2) + O((n-2)^2) + ... + O(1^2)
+// T(n) = n! + O(n^2)
+// Time Complexity -> Time complexity is O(n!), where n is the number of elements in the array. This is because the function generates all possible permutations of the array, which is a factorial operation.
+// Space Complexity -> The space complexity of the solveNQueens function is O(n), where n is the number of elements in the array. This is because the function uses a stack frame for each recursive call, and in the worst case, the depth of the recursion is equal to the number of elements in the array.
