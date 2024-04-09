@@ -33,5 +33,5 @@ console.log(generateParenthesis(3)); // Call the function with n=3 and print the
 // The base case occurs when both leftCount and rightCount are equal to n
 // Time Complexity->  The time complexity is O(2^n), where n is the number of pairs of parentheses.
 // At each step of the recursion, we make two recursive calls, leading to an exponential growth in the number of function calls.
-// Space Complexity-> The space complexity is O(2n) = O(n), where n is the number of pairs of parentheses.
+// Space Complexity-> The space complexity is O(n), where n is the number of pairs of parentheses.
 // In the worst case, the recursion depth is 2n due to the two recursive calls made at each step.
