@@ -42,3 +42,8 @@ var result = search(nums, target);
 
 // Output the result
 console.log(result); // Output: 4
+
+
+// Time Complexity-> The time complexity of binary search is O(log n), where n is the number of elements in the array. This is because with each comparison, the search space is halved.
+
+// Space Complexity-> The space complexity of binary search is O(1), which means it uses a constant amount of additional space. This is because the algorithm only uses a fixed amount of space to store the input array, the target number, and a few variables for the search bounds, regardless of the size of the input array.
