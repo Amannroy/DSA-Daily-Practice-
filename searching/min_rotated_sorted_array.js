@@ -1,8 +1,5 @@
-/**
- * @param {number[]} nums - An array of numbers.
- * @return {number} - The minimum number in the array.
- */
-var findMin = function(nums) {
+
+let findMin = function(nums) {
     // Assume the first element is the minimum
     let min = nums[0];
     // Iterate over each element in the array starting from the second element
@@ -16,10 +13,10 @@ var findMin = function(nums) {
     return min;
 };
 // Example array of numbers
-var nums = [3, 4, 5, 1, 2];
+let nums = [3, 4, 5, 1, 2];
 
 // Call the findMin function with the array
-var result = findMin(nums);
+let result = findMin(nums);
 
 // Output the result
 console.log(result); // Output: 1
