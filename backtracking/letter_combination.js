@@ -44,7 +44,7 @@ function backtrack(map, digits, combination, result) {
     }
 }
 
-console.log(letterCombinations("123"));
+console.log(letterCombinations("23"));
 
 // Recurrence Relation -> T(n) = n * T(n-1) + O(1)
 // where n is the length of the digits string. This is because the function //explores all possible combinations of letters for each digit, and for each //digit, it makes n recursive calls.
