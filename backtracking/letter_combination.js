@@ -53,4 +53,4 @@ console.log(letterCombinations("23"));
 // Reason: The backtrack function explores all possible combinations of letters, //which grows exponentially with the length of the digits string (i.e., 3^n). //Additionally, the function needs to iterate through the n digits, which //contributes the n factor to the time complexity. 
 
 // Space Complexity -> The space complexity of the letterCombinations function is also O(n * 3^n).
-// Reason: The function needs to store all the intermediate combinations (which require O(n * 3^n) space) during the recursive calls, as well as the final result (which also requires O(n * 3^n) space), leading to an overall space complexity of O(n * 3^n).
+// Reason: The function needs to store all the intermediate combinations (which require O(n * 3^n) space), during the recursive calls, as well as the final result (which also requires O(n * 3^n) space), leading to an overall space complexity of O(n * 3^n).
