@@ -75,3 +75,7 @@
 //     return uniqueElements+1;
 // }
 // console.log(removeDuplicate([1,1,2])) // Output->2
+
+// Time Complexity-> The time complexity of the removeDuplicate function is O(n), where n is the length of the input array nums. This is because the function iterates through the array once with a single loop.
+
+// Space Complexity-> The space complexity is O(1), as the function operates in-place without using any extra space that scales with the size of the input array. The only additional space used is for a constant number of variables (uniqueElements, i), regardless of the size of the input array. Therefore, the space complexity is constant.
