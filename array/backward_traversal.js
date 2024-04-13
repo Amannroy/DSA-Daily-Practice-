@@ -56,3 +56,22 @@
 // console.log(result) //Output->[ 2, 4, 6, 8, 10 ]
 
 
+// Important
+// Remove Duplicates from Sorted Array
+// Input: nums = [1,1,2]
+// Output: 2, nums = [1,2,_]
+
+// function removeDuplicate(nums){
+//     if(nums.length === 0){
+//         return 0;
+//     }
+//     let uniqueElements = 0;
+//     for(let i=0;i<nums.length;i++){
+//         if(nums[i] !== nums[uniqueElements]){
+//             uniqueElements++;
+//             nums[uniqueElements] = nums[i];
+//         }
+//     }
+//     return uniqueElements+1;
+// }
+// console.log(removeDuplicate([1,1,2])) // Output->2
