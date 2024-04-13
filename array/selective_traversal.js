@@ -32,3 +32,22 @@
 //     }
 // }
 // console.log(count) // Output->2
+
+// Important
+// 2 sum
+// function twoSum(nums,target){
+//     for(let i=0;i<nums.length;i++){
+//         for(let j=i+1;j<nums.length;j++){
+//             if(nums[i] + nums[j] === target){
+//                 return [i,j];
+//             }
+//         }
+//     }
+// }
+// console.log(twoSum([2,7,11,15],9)); // Output->[0,1]
+
+// Time Complexity->O(n^2), where n is the length of the nums array. This is because the function uses nested loops to iterate over each pair of elements in the array
+// Space Complexity->O(1) because the function uses only a constant amount of extra space regardless of the size of the input array. 
+
+
+// Using Hash Map
