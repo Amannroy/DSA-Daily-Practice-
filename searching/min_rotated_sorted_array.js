@@ -18,7 +18,7 @@ let nums = [3, 4, 5, 1, 2];
 // Call the findMin function with the array
 let result = findMin(nums);
 
-// Output the result
+// Output
 console.log(result); // Output: 1
 
 
