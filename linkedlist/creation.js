@@ -50,7 +50,7 @@ class LinkedList{
            let current;
            // Checking if the list is empty(head is null)
            if(this.head === null){
-            // If empty, set the head tot he new node
+            // If empty, set the head to the new node
             this.head = node;
            }else{
             // If not empty, traverse to the end of the list
