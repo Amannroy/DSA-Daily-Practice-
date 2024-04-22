@@ -14,7 +14,7 @@ function sumOfDigits(n) {
 console.log(sumOfDigits(98)); // Output: 17
 
 
-// Recurrence Relation
+// Recurrence Relation-> T(n)=T([n/10]) + O(1), This means the time taken to compute the sum of digits of n is the time taken to compute the sum of digits of [n/10] plus a constant time operation.
 
-// Time Complexity
-// Space Complexity
+// Time Complexity->  Time complexity can be expressed as O(log n) where n is the input number.
+// Space Complexity-> The space complexity is O(log n) due to the maximum depth of the recursion stack.
