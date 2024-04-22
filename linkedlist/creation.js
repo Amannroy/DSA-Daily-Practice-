@@ -1,117 +1,174 @@
-//1. How to create class Node
-
-// In this ES6 version, the Node class is defined with a constructor that initializes data and next. The setNext and getNext methods are defined directly within the class body, making the code more readable and concise.
-
-/*
-Constructor: The constructor function is a special method for creating and initializing an object created with a class. It takes one parameter, data, which represents the data stored in the node. The constructor initializes the data property with the passed value and sets the next property to null, indicating that this node does not link to any other node yet.
-setNext Method: This method allows you to set the next node in the list. It takes one parameter, node, which is the node to be linked to the current node. The method assigns the passed node to the next property of the current node.
-getNext Method: This method returns the next node in the list. It does not take any parameters and simply returns the value of the next property of the current node.*/
-
-// Defining a class named Node
-class Node{
-    // Constructor function that initializes a new Node object
-    constructor(data){
-        // Assigning the passed data to the data property of the Node object
+/**
+ * Implementation of a singly linked list in JavaScript.
+ * A linked list is a linear data structure where elements are stored in a sequence.
+ * Each element points to the next element in the sequence.
+ *
+ * The Node class represents individual elements in the linked list.
+ * Each node contains a data value and a reference (pointer) to the next node.
+ *
+ * The MyLinkedList class represents the linked list itself.
+ * It contains methods for adding, deleting, and accessing elements in the list.
+ * Operations include adding elements at the head, tail, or specific index,
+ * deleting elements at a specific index, and accessing elements by index.
+ *
+ * @class
+ */
+var Node = function(data) {
+    // Constructor function for creating a new node.
+    // @param {any} data - The value to be stored in the node.
     this.data = data;
-    // Initialize the next property to null, indicatingthe end of the list
-    this.next = null;
+    this.next = null; // Pointer to the next node, initially null.
 }
 
-// Method to set the next node in the list
-setNext(node){
-    // Assigning the passed node to the next property of th current Node object
-    this.next = node;
-}
+var MyLinkedList = function() {
+    // Constructor function for creating a new linked list.
+    this.head = null; // Pointer to the first node, initially null (empty list).
+};
 
-// Method to get the next node in the list
-getNext(){
-    //Returning the next node of the current Node object
-    return this.next;
-}
-}
-
-
-//2. Linked List class that will manage the nodes. This class will have methods to add nodes, remove nodes, and display the list
-
-// Defining the linkedlist class
-class LinkedList{
-    // Constructor function to initialize a new linkedlist object
-    constructor(){
-        // Initializing the head to the list to null, indicating an empty list
-        this.head = null;
-        // Initializing the size of the list to 0
-        this.size = 0;
+/** 
+ * Retrieves the element at the specified index in the linked list.
+ * If the index is out of range, returns -1.
+ * @param {number} index - The index of the element to retrieve.
+ * @return {number} - The data value of the node at the specified index.
+ */
+MyLinkedList.prototype.get = function(index) {
+    let i = 0;
+    let temp = this.head; // Start from the head of the list.
+    // Traverse the list until reaching the specified index or the end of the list.
+    while (i < index && temp != null) {
+        i++;
+        temp = temp.next; // Move to the next node.
     }
-    // Method to add an element at the end of the list
-    add(element){
-        // Create a new Node with the given element
-           let node = new Node(element);
-           // Declaring a variable to hold the current node during traversal
-           let current;
-           // Checking if the list is empty(head is null)
-           if(this.head === null){
-            // If empty, set the head to the new node
-            this.head = node;
-           }else{
-            // If not empty, traverse to the end of the list
-            current = this.head;
-            while(current.next){
-                current = current.next;
-            }
-            // Linking the last node to the new node
-            current.next = node;
-           }
-           // Incrementing the size of the list
-           this.size++;
-    }
+    // If index is out of range, return -1, otherwise return the data value.
+    if (temp == null) return -1;
+    return temp.data;
+};
 
-    //Method to insert an element at a specific position
-    insertAt(element,index){
-        // Checking if the index is valid
-        if(index < 0 || index > this.size){
-            // If not, log an error message
-            return console.log("Please enter a valid index,");
+/** 
+ * Adds a new node with the given value at the beginning of the linked list.
+ * @param {number} val - The value to be added to the list.
+ * @return {void}
+ */
+MyLinkedList.prototype.addAtHead = function(val) {
+    // If the list is empty, the new node becomes the head.
+    // Otherwise, adjust pointers to make the new node the head.
+    if (this.head == null) {
+        this.head = new Node(val);
+    } else {
+        let n = new Node(val);
+        n.next = this.head;
+        this.head = n;
+    }
+};
+
+/** 
+ * Adds a new node with the given value at the end of the linked list.
+ * @param {number} val - The value to be added to the list.
+ * @return {void}
+ */
+MyLinkedList.prototype.addAtTail = function(val) {
+    // If the list is empty, the new node becomes the head.
+    // Otherwise, traverse the list to find the last node and append the new node.
+    if (this.head == null) {
+        this.head = new Node(val);
+    } else {
+        let temp = this.head;
+        while (temp.next != null) {
+            temp = temp.next;
         }
-        // Creating a new Node with the given element
-        let node = new Node(element);
-        // Declaring variables to hold the current and previous nodes during traversal
-        let curr, prev;
-        // Starting the traversal from the head
-        curr = this.head;
-        // Checking if inserting at the beginning of the list
-        if(index === 0){
-            // If so, setting the new node's next to the current head(This ensures new node points to the current head)
-            node.next = this.head;
-            // Updating the head to the new node(This makes the new node the new head of the list)
-            this.head = node;
-        }else{
-            // If not, traverse to the desired position
-            let it = 0;// Initializing an iterator to keep track of the current position
-            while(it < index){
-                // Continuing traversing until reaching the desired index
-                it++; // Incrementing the iterator to move closer to the desired index
-                prev = curr; // Updating the previous node reference to the current node before moving to the next node
-                curr = curr.next; // Moving to the next node in the linked list
-            }
-            // Linking the new node to the new node
-            node.next = curr; // Linking the new node to the current node by setting the next pointer t the current node's next
-
-            // Linking the previous node to the new node
-            prev.next = node; // updating the next pointer of the previous node to point to the new node, effectively inserting the new node into the linked list
-        }
-
-
-
+        let n = new Node(val);
+        temp.next = n;
     }
+};
 
-
-
-    removeFrom(index){
-
-
+/** 
+ * Adds a new node with the given value at the specified index in the linked list.
+ * If the index is greater than the length of the list, the node will not be added.
+ * @param {number} index - The index at which to add the node.
+ * @param {number} val - The value to be added to the list.
+ * @return {void}
+ */
+MyLinkedList.prototype.addAtIndex = function(index, val) {
+    // If the list is empty and the index is not 0, do nothing.
+    if (this.head == null && index != 0) return;
+    // If the list is empty and the index is 0, add the new node as the head.
+    if (this.head == null) {
+        this.head = new Node(val);
+        return;
     }
+    // If index is 0, add the new node at the head.
+    if (index == 0) {
+        this.addAtHead(val);
+        return;
+    }
+    let i = 0;
+    let prev = null;
+    let curr = this.head;
+    // Traverse the list to find the node before the specified index.
+    while (i < index && curr != null) {
+        i++;
+        prev = curr;
+        curr = curr.next;
+    }
+    // If the index is out of range, do nothing.
+    if (i != index) return;
+    let n = new Node(val);
+    prev.next = n;
+    n.next = curr;
+};
+
+/** 
+ * Deletes the node at the specified index in the linked list.
+ * If the index is out of range, or the list is empty, do nothing.
+ * @param {number} index - The index of the node to be deleted.
+ * @return {void}
+ */
+MyLinkedList.prototype.deleteAtIndex = function(index) {
+    // If the list is empty, do nothing.
+    if (this.head == null) return;
+    // If index is 0, delete the head node.
+    if (index == 0) {
+        this.deleteAtHead();
+        return;
+    }
+    let i = 0;
+    let prev = null;
+    let nodeToBeDel = this.head;
+    // Traverse the list to find the node before the specified index.
+    while (i < index && nodeToBeDel != null) {
+        prev = nodeToBeDel;
+        nodeToBeDel = nodeToBeDel.next;
+        i++;
+    }
+    // If the index is out of range, do nothing.
+    if (i != index) return;
+    // If the node to be deleted is found, adjust pointers to remove it from the list.
+    if (nodeToBeDel == null) return;
+    let newNext = nodeToBeDel.next;
+    prev.next = newNext;
+    nodeToBeDel.next = null; // Disconnect the deleted node from the list.
+};
+
+/** 
+ * Deletes the head node of the linked list.
+ * @return {void}
+ */
+MyLinkedList.prototype.deleteAtHead = function() {
+    // If the list is empty, do nothing.
+    if (this.head == null) return;
+    // Update the head pointer to the next node and disconnect the current head.
+    let nextHead = this.head.next;
+    let nodeToBeDelete = this.head;
+    this.head = nextHead;
+    nodeToBeDelete.next = null;
 }
 
-
-
-
+/** 
+ * Your MyLinkedList object will be instantiated and called as such:
+ * var obj = new MyLinkedList()
+ * var param_1 = obj.get(index)
+ * obj.addAtHead(val)
+ * obj.addAtTail(val)
+ * obj.addAtIndex(index,val)
+ * obj.deleteAtIndex(index)
+ */
