@@ -17,7 +17,7 @@ function printFibonacciSequence(n) {
 }
 
 // Call the printFibonacciSequence function with the argument 6 to print the Fibonacci sequence up to the 6th term.
-console.log(printFibonacciSequence(6));
+console.log(printFibonacciSequence(6)); // [0, 1, 1, 2, 3, 5]
 
 
 // Recurrence Relation-> T(n)=T(n−1)+T(n−2)+O(1), where T(n) represents the time taken to compute the nth Fibonacci number.
