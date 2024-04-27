@@ -28,7 +28,10 @@ function power(x, n) {
 console.log(power(2, 5)); // Output: 16
 
 
-// Recurrence Relation
+// Recurrence Relation-> T(n) = T(n/2) + O(1)
+// This relation captures the essence of the function, where the function calls itself with n/2 and performs a constant amount of work (squaring or multiplying) to calculate the final result.
 
-// Time Complexity
-// Space Complexity
+// Time Complexity-> T(n) = aT(n/b) + f(n)
+// In our case, a = 1, b = 2, and f(n) = O(1). According to the Master Theorem, since f(n) is a constant, the time complexity is O(n^log_b(a)), which simplifies to O(n).
+// Space Complexity->The space complexity of this function is determined by the maximum depth of the recursion tree, which is log(n) because the function divides n by 2 at each level of recursion. Therefore, the space complexity is O(log(n)).
+// In summary, the power(x, n) function has a time complexity of O(n) and a space complexity of O(log(n)) due to its divide-and-conquer approach, which significantly reduces the number of recursive calls compared to a naive approach.
