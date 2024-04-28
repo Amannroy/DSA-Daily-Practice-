@@ -43,6 +43,16 @@ class Stack {
        // Return the length of the stack array
        return this.stack.length;
     }
+    // Method to traverse and print the stack elements
+    traverse() {
+      // while (!this.isEmpty()) {
+      //     console.log(this.pop());
+      // }
+      
+      for(let i=0; i<this.size(); i++){
+          console.log(this.stack[i]);
+      }
+  }
    
     // Method to print the stack elements
     printStack() {}
@@ -56,6 +66,7 @@ class Stack {
    stack.push(69);
    stack.push(420);
    
+   console.log(stack.traverse());
    // Print the size of the stack
    console.log(stack.size()); // Output: 3
    
