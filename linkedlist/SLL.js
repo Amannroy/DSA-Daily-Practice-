@@ -11,164 +11,149 @@
  * Operations include adding elements at the head, tail, or specific index,
  * deleting elements at a specific index, and accessing elements by index.
  *
- * @class
- */
-var Node = function(data) {
-    // Constructor function for creating a new node.
-    // @param {any} data - The value to be stored in the node.
-    this.data = data;
-    this.next = null; // Pointer to the next node, initially null.
+// Linked List in Javascript
+
+class Node {
+  // Constructor for creating a new node with the given data and setting its next pointer to null
+  constructor(data) {
+    this.data = data; // The data stored in the node
+    this.next = null; // Pointer to the next node in the list
+  }
 }
 
-var MyLinkedList = function() {
-    // Constructor function for creating a new linked list.
-    this.head = null; // Pointer to the first node, initially null (empty list).
-};
+class LinkedList {
+  // Constructor for creating a new linked list
+  constructor() {
+    this.head = null; // The first node in the list
+  }
 
-/** 
- * Retrieves the element at the specified index in the linked list.
- * If the index is out of range, returns -1.
- * @param {number} index - The index of the element to retrieve.
- * @return {number} - The data value of the node at the specified index.
- */
-MyLinkedList.prototype.get = function(index) {
-    let i = 0;
-    let temp = this.head; // Start from the head of the list.
-    // Traverse the list until reaching the specified index or the end of the list.
-    while (i < index && temp != null) {
-        i++;
-        temp = temp.next; // Move to the next node.
-    }
-    // If index is out of range, return -1, otherwise return the data value.
-    if (temp == null) return -1;
-    return temp.data;
-};
+  // Adds a new node at the beginning of the list
+  addFirst(data) {
+    const newNode = new Node(data); // Create a new node with the given data
+    newNode.next = this.head; // Set the new node's next pointer to the current head
+    this.head = newNode; // Update the head of the list to the new node
+  }
 
-/** 
- * Adds a new node with the given value at the beginning of the linked list.
- * @param {number} val - The value to be added to the list.
- * @return {void}
- */
-MyLinkedList.prototype.addAtHead = function(val) {
-    // If the list is empty, the new node becomes the head.
-    // Otherwise, adjust pointers to make the new node the head.
-    if (this.head == null) {
-        this.head = new Node(val);
-    } else {
-        let n = new Node(val);
-        n.next = this.head;
-        this.head = n;
-    }
-};
+  // Adds a new node at the end of the list
+  addLast(data) {
+    const newNode = new Node(data); // Create a new node with the given data
 
-/** 
- * Adds a new node with the given value at the end of the linked list.
- * @param {number} val - The value to be added to the list.
- * @return {void}
- */
-MyLinkedList.prototype.addAtTail = function(val) {
-    // If the list is empty, the new node becomes the head.
-    // Otherwise, traverse the list to find the last node and append the new node.
-    if (this.head == null) {
-        this.head = new Node(val);
-    } else {
-        let temp = this.head;
-        while (temp.next != null) {
-            temp = temp.next;
-        }
-        let n = new Node(val);
-        temp.next = n;
+    if (!this.head) { // If the list is empty
+      this.head = newNode; // Set the new node as the head
+      return;
     }
-};
 
-/** 
- * Adds a new node with the given value at the specified index in the linked list.
- * If the index is greater than the length of the list, the node will not be added.
- * @param {number} index - The index at which to add the node.
- * @param {number} val - The value to be added to the list.
- * @return {void}
- */
-MyLinkedList.prototype.addAtIndex = function(index, val) {
-    // If the list is empty and the index is not 0, do nothing.
-    if (this.head == null && index != 0) return;
-    // If the list is empty and the index is 0, add the new node as the head.
-    if (this.head == null) {
-        this.head = new Node(val);
-        return;
+    let current = this.head; // Start at the head of the list
+    while (current.next) { // While there is a next node
+      current = current.next; // Move to the next node
     }
-    // If index is 0, add the new node at the head.
-    if (index == 0) {
-        this.addAtHead(val);
-        return;
-    }
-    let i = 0;
-    let prev = null;
-    let curr = this.head;
-    // Traverse the list to find the node before the specified index.
-    while (i < index && curr != null) {
-        i++;
-        prev = curr;
-        curr = curr.next;
-    }
-    // If the index is out of range, do nothing.
-    if (i != index) return;
-    let n = new Node(val);
-    prev.next = n;
-    n.next = curr;
-};
 
-/** 
- * Deletes the node at the specified index in the linked list.
- * If the index is out of range, or the list is empty, do nothing.
- * @param {number} index - The index of the node to be deleted.
- * @return {void}
- */
-MyLinkedList.prototype.deleteAtIndex = function(index) {
-    // If the list is empty, do nothing.
-    if (this.head == null) return;
-    // If index is 0, delete the head node.
-    if (index == 0) {
-        this.deleteAtHead();
-        return;
-    }
-    let i = 0;
-    let prev = null;
-    let nodeToBeDel = this.head;
-    // Traverse the list to find the node before the specified index.
-    while (i < index && nodeToBeDel != null) {
-        prev = nodeToBeDel;
-        nodeToBeDel = nodeToBeDel.next;
-        i++;
-    }
-    // If the index is out of range, do nothing.
-    if (i != index) return;
-    // If the node to be deleted is found, adjust pointers to remove it from the list.
-    if (nodeToBeDel == null) return;
-    let newNext = nodeToBeDel.next;
-    prev.next = newNext;
-    nodeToBeDel.next = null; // Disconnect the deleted node from the list.
-};
+    current.next = newNode; // Link the last node to the new node
+  }
 
-/** 
- * Deletes the head node of the linked list.
- * @return {void}
- */
-MyLinkedList.prototype.deleteAtHead = function() {
-    // If the list is empty, do nothing.
-    if (this.head == null) return;
-    // Update the head pointer to the next node and disconnect the current head.
-    let nextHead = this.head.next;
-    let nodeToBeDelete = this.head;
-    this.head = nextHead;
-    nodeToBeDelete.next = null;
+  // Returns the number of nodes in the list
+  size() {
+    let count = 0; // Initialize a counter
+    let current = this.head; // Start at the head of the list
+    while (current) { // While there is a node
+      count++; // Increment the counter
+      current = current.next; // Move to the next node
+    }
+    return count; // Return the total count
+  }
+
+  // Adds a new node at a specific index in the list
+  addAt(index, data) {
+    if (index < 0 || index > this.size()) { // If the index is out of bounds
+      console.error("Invalid Index"); // Log an error message
+      return;
+    }
+
+    const newNode = new Node(data); // Create a new node with the given data
+    if (index === 0) { // If adding at the beginning of the list
+      newNode.next = this.head; // Link the new node to the current head
+      this.head = newNode; // Update the head of the list
+      return;
+    }
+
+    let current = this.head; // Start at the head of the list
+    for (let i = 0; i < index - 1; i++) { // Move to the desired index
+      current = current.next;
+    }
+
+    newNode.next = current.next; // Link the new node to the next node at the target index
+    current.next = newNode; // Update the link to point to the new node
+  }
+
+  // Removes the first node in the list
+  removeTop() {
+    if (!this.head) { // If the list is empty
+      return;
+    }
+
+    this.head = this.head.next; // Move the head to the next node
+  }
+
+  // Removes the last node in the list
+  removeLast() {
+    if (!this.head) { // If the list is empty
+      return;
+    }
+
+    let current = this.head; // Start at the head of the list
+    while (current.next.next) { // While there is a next node after the current one
+      current = current.next; // Move to the next node
+    }
+
+    current.next = null; // Set the next pointer of the second-to-last node to null
+  }
+
+  // Removes a node at a specific index in the list
+  removeAt(index) {
+    if (index < 0 || index > this.size()) { // If the index is out of bounds
+      console.error("Invalid Index"); // Log an error message
+      return;
+    }
+
+    if (index === 0) { // If removing the first node
+      this.head = this.head.next; // Move the head to the next node
+      return;
+    }
+
+    let current = this.head; // Start at the head of the list
+    for (let i = 0; i < index - 1; i++) { // Move to the desired index
+      current = current.next;
+    }
+
+    if (current.next) { // If there is a next node
+      current.next = current.next.next; // Skip over the next node
+    }
+  }
+
+  // Prints all the data in the list
+  print() {
+    let current = this.head; // Start at the head of the list
+    while (current) { // While there is a node
+      console.log(current.data); // Print the data of the current node
+      current = current.next; // Move to the next node
+    }
+  }
 }
 
-/** 
- * Your MyLinkedList object will be instantiated and called as such:
- * var obj = new MyLinkedList()
- * var param_1 = obj.get(index)
- * obj.addAtHead(val)
- * obj.addAtTail(val)
- * obj.addAtIndex(index,val)
- * obj.deleteAtIndex(index)
- */
+// Example usage of the LinkedList class
+const linkedlist = new LinkedList(); // Create a new linked list
+
+linkedlist.addFirst(5); // Add 5 at the beginning
+linkedlist.addFirst(3); // Add 3 at the beginning
+linkedlist.addFirst(8); // Add 8 at the beginning
+linkedlist.addLast(6); // Add 6 at the end
+
+linkedlist.removeTop(); // Remove the first node
+
+linkedlist.addAt(2, 8); // Add 8 at index 2
+
+linkedlist.removeLast(); // Remove the last node
+linkedlist.removeAt(2); // Remove the node at index 2
+
+linkedlist.print(); // Print all nodes
+console.log("size = " + linkedlist.size()); // Print the size of the list
