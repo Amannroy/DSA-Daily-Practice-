@@ -186,3 +186,43 @@ This linked list represents the sum of the reversed numbers 243 and 564, which i
 //     }
 //     return currA;
 // }
+
+// 9. Middle of the linked list
+// Input: head = [1,2,3,4,5]
+// Output: [3,4,5]
+// Explanation: The middle node of the list is node 3.
+
+
+// let middleNode = function(head) {
+//     let slow = head;
+//     let fast = head;
+
+//     while(fast !== null && fast.next !== null){
+//         slow = slow.next;
+//         fast = fast.next.next;
+//     }
+//     return slow;
+// };
+
+// 10. Remove Duplicates from sorted listI
+// Input: head = [1,1,2]
+// Output: [1,2]
+
+// let deleteDuplicates = function(head){
+//     let current = head;
+//     while(current !== null && current.next !== null){
+//         if(current.val === current.next.val){
+//             current.next = current.next.next;
+//         }else{
+//             current = current.next;
+//         }
+//     }
+//     return head;
+// }
+
+// 11. 82. Remove Duplicates from Sorted List II
+
+// Given the head of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list sorted as well.
+// Input: head = [1,2,3,3,4,4,5]
+// Output: [1,2,5]
+
