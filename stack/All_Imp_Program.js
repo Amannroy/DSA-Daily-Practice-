@@ -30,48 +30,41 @@ console.log(output);  // Output: "blue is sky the"
 
 // 2. Valid Parenthesis
 
-function isValid(s) {
-    // Initialize an empty stack to keep track of opening brackets
-    let stack = [];
-
-    // Loop through each character in the string
-    for (let i = 0; i < s.length; i++) {
-        let char = s[i]; // Get the current character
-
-        // If the character is an opening bracket, push it onto the stack
-        if (char === '(' || char === '[' || char === '{') {
-            stack.push(char);
+function isBalanced(expression) {
+    // Initialize an empty stack using an array
+    const stack = [];
+    
+    // Iterate through each character in the expression
+    for (let char of expression) {
+      // If the character is an opening bracket, push it onto the stack
+      if (char === '(' || char === '{' || char === '[') {
+        stack.push(char);
+      } 
+      // If the character is a closing bracket
+      else if (char === ')' || char === '}' || char === ']') {
+        // If the stack is empty, it means there's no matching opening bracket
+        if (stack.length === 0) return false;
+        
+        // Pop the top element from the stack
+        const top = stack.pop();
+        
+        // Check if the popped element matches the current closing bracket
+        if ((char === ')' && top !== '(') || 
+            (char === '}' && top !== '{') || 
+            (char === ']' && top !== '[')) {
+          return false; // If not, the expression is unbalanced
         }
-        // If the character is a closing bracket
-        else if (char === ')' || char === ']' || char === '}') {
-            // If the stack is empty (no opening bracket to match with), return false
-            if (isEmpty(stack)) {
-                return false;
-            }
-            // Pop the top element from the stack (the most recent unmatched opening bracket)
-            const top = stack.pop();
-            // Check if the popped element matches the current closing bracket
-            if ((char === ')' && top !== '(') ||
-                (char === '}' && top !== '{') ||
-                (char === ']' && top !== '[')) {
-                // If it doesn't match, the string is invalid
-                return false;
-            }
-        }
+      }
     }
-
-    // After processing all characters, if the stack is empty, all brackets were properly matched
-    return isEmpty(stack);
-}
-
-// Helper function to check if the stack is empty
-function isEmpty(stack) {
+    
+    // If the stack is empty, all brackets were matched; otherwise, unbalanced
     return stack.length === 0;
-}
-
-// Test the function with an example string
-const string1 = "([{}])";
-console.log(isValid(string1)); // Output: true
+  }
+  
+  // Test the function with examples
+  console.log(isBalanced("{[()]}"));  // Output: true
+  console.log(isBalanced("{[(])}"));  // Output: false
+  
 
 // 3. Min Stack
 
