@@ -1,35 +1,34 @@
-// Function to generate all permutations of an array
+// Define a function named "permutation" which takes an array of numbers as input
 function permutation(nums) {
-    // Initialize an empty array to store the results
+    // Initialize an empty array called "result" to store the permutations
     let result = [];
-    // Call the helper function to start the permutation process
+
+    // Define a nested helper function named "permuteHelper" to generate permutations recursively
+    function permuteHelper(nums, start, result) {
+        // If we have processed all elements, i.e., start index reaches the end of the array
+        if (start === nums.length) {
+            // Add a copy of the current permutation (nums) to the "result" array
+            return result.push([...nums]);
+        }
+        // Iterate over the array elements starting from the current "start" index
+        for (let i = start; i < nums.length; i++) {
+            // Swap the current element with the element at the "start" index
+            [nums[start], nums[i]] = [nums[i], nums[start]];
+            // Recursively call permuteHelper with the next start index (start + 1)
+            permuteHelper(nums, start + 1, result);
+            // Backtrack by swapping the elements back to their original positions
+            [nums[start], nums[i]] = [nums[i], nums[start]];
+        }
+    }
+    // Start the permutation generation process from the first element (index 0)
     permuteHelper(nums, 0, result);
-    // Return the array of all permutations
+    // Return the array containing all the permutations
     return result;
 }
 
-// Helper function to perform the actual permutation
-function permuteHelper(nums, start, result) {
-    // Base case: if the start index is equal to the length of the array,
-    // it means we have reached the end of a permutation, so we add it to the result
-    if (start === nums.length) {
-        // Use slice to create a copy of the current permutation and add it to the result
-        result.push(nums.slice());
-        return;
-    }
-    // Iterate over the array starting from the current index
-    for (let i = start; i < nums.length; i++) {
-        // Swap the element at the start index with the current element
-        [nums[start], nums[i]] = [nums[i], nums[start]];
-        // Recursively call the helper function for the next index
-        permuteHelper(nums, start + 1, result);
-        // Swap back the elements to restore the original array for the next iteration
-        [nums[start], nums[i]] = [nums[i], nums[start]];
-    }
-}
-
-// Example usage
+// Call the "permutation" function with an array [1, 2, 3] and log the result to the console
 console.log(permutation([1, 2, 3]));
+
 
 
 // Recurrence Relation->Recursive Case: T(n) = n * T(n-1) + O(1)
