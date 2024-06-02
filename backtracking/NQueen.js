@@ -79,3 +79,43 @@ console.log(solveNQueens(4));
 // T(n) = n! + O(n^2)
 // Time Complexity -> Time complexity is O(n!), where n is the number of elements in the array. This is because the function generates all possible permutations of the array, which is a factorial operation.
 // Space Complexity -> The space complexity of the solveNQueens function is O(n), where n is the number of elements in the array. This is because the function uses a stack frame for each recursive call, and in the worst case, the depth of the recursion is equal to the number of elements in the array.
+
+
+
+
+
+// Simplified Explanation:
+// Define Function to Solve N-Queens:
+
+// We have a function called solveNQueens that helps us solve the N-Queens problem.
+// Initialize the Chessboard and Result Array:
+
+// We create a chessboard with empty cells represented by . and store it in a variable called board.
+// We also create an empty array called result to store our solutions.
+// Check If a Queen Can Be Placed:
+
+// We have a helper function called couldPlace that checks if we can safely place a queen at a given position on the board.
+// It checks if there are no other queens in the same column or diagonals.
+// Backtracking to Find Solutions:
+
+// We have a function called backtrack that tries to place queens on the board using backtracking.
+// It starts from the first row and tries placing queens in each column, checking if it's safe to do so.
+// If placing a queen in a particular position leads to a conflict, it backtracks and tries the next column.
+// Base Case:
+
+// If we've successfully placed all queens (reached the end of the board), we add the current board configuration to our list of solutions.
+// Start the Backtracking Process:
+
+// We start the backtracking process by calling the backtrack function initially with the first row.
+// Return the Result:
+
+// Once the backtracking process is complete, we return the result array containing all valid board configurations.
+// Example with N = 4:
+
+// For example, if we want to solve the N-Queens problem for a 4x4 board, the function will find and return all possible ways to place 4 queens on the board without attacking each other.
+// Simplified Summary:
+// We have a function to solve the N-Queens problem.
+// It creates a chessboard and tries to place queens on it.
+// It uses backtracking to explore all possible configurations.
+// Once it finds all solutions, it returns them.
+// This code essentially helps us find all the different arrangements of queens on a chessboard such that no two queens can attack each other.
