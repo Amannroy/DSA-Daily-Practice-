@@ -1,27 +1,29 @@
 // Insertion Sort function
 function insertionSort(arr) {
-  // Iterate over the array starting from the second element
-  for (let i = 1; i < arr.length; i++) {
-    // Store the current element to be inserted
-    let insertNumber = arr[i];
-    // Initialize the index for the element to be compared with
-    let j = i - 1;
-    // While the current index is within the array and the element at the current index is greater than the element to be inserted
-    while (j >= 0 && arr[j] > insertNumber) {
-      // Shift the element at the current index to the right
-      arr[j + 1] = arr[j];
-      // Decrement the index to compare with the previous element
-      j--;
+    // Iterate over the array starting from the second element (index 1)
+    for (let i = 1; i < arr.length; i++) {
+        // Store the current element as the value to be inserted in the correct position
+        let v = arr[i];
+        // Initialize the index for the element to be compared with
+        let j = i;
+        // Continue comparing the current element with the previous elements
+        while (j >= 1 && arr[j - 1] > v) {
+            // If the previous element is greater, shift it to the right
+            arr[j] = arr[j - 1];
+            // Move to the previous element
+            j -= 1;
+        }
+        // Insert the current element in its correct position
+        arr[j] = v;
     }
-    // Insert the element to be inserted at the correct position
-    arr[j + 1] = insertNumber;
-  }
-  // Return the sorted array
-  return arr;
+    // Return the sorted array
+    return arr;
 }
 
-// Test the insertionSort function with an example array
-console.log(insertionSort([3, 5, 2, 8, 4, 9]));
+// Example usage
+let arr = [5, 4, 1, 3, 2];
+console.log(insertionSort(arr));
+
 
 // Time Complexity : O(n^2) where n is the size of the array due to use of 2 nested loops
 // Space Complexity : O(1) (As no external data structure used in this code)
