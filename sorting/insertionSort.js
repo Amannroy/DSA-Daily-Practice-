@@ -1,32 +1,28 @@
 // Insertion Sort function
 function insertionSort(arr) {
-    // Iterate over the array starting from the second element (index 1)
-    for (let i = 1; i < arr.length; i++) {
-        // Store the current element as the value to be inserted in the correct position
-        let v = arr[i];
-        // Initialize the index for the element to be compared with
-        let j = i;
-        // Continue comparing the current element with the previous elements
-        while (j >= 1 && arr[j - 1] > v) {
-            // If the previous element is greater, shift it to the right
-            arr[j] = arr[j - 1];
-            // Move to the previous element
-            j -= 1;
-        }
-        // Insert the current element in its correct position
-        arr[j] = v;
+  const n = arr.length;
+
+  for (let i = 1; i < n; i++) {
+    // n
+    const key = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j] > key) {
+      // n
+      arr[j + 1] = arr[j];
+      j--;
     }
-    // Return the sorted array
-    return arr;
+    arr[j + 1] = key;
+  }
+
+  return arr;
 }
 
-// Example usage
-let arr = [5, 4, 1, 3, 2];
-console.log(insertionSort(arr));
+console.log(insertionSort([29, 10, 14, 37, 14, 33, 8, 11]));
 
-
-// Time Complexity : O(n^2) where n is the size of the array due to use of 2 nested loops
-// Space Complexity : O(1) (As no external data structure used in this code)
+// Best Case Time Complexity = O(n)
+// Worst Case Time Complexity = O(n^2)
+// Average Case Time Complexity = O(n^2)
+// Space Complexity = O(1)
 
 // Stable Sorting -> In this algorithm there is no change of relative position of same element
 
